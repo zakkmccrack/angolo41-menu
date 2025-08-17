@@ -4,6 +4,7 @@ import { useState } from "react"
 import { supabase } from "@/lib/supabase/supabase"
 import { useRouter } from "next/navigation"
 import Input from "@/components/admin/Input"
+import SubmitButton from "@/components/admin/SubmitButton"
 
 export default function AddDrinkPage() {
     const [name, setName] = useState("")
@@ -94,24 +95,24 @@ export default function AddDrinkPage() {
                         onChange={(e) => setProductType(e.target.value)}
                         className="w-full border p-2 rounded-md focus:border-emerald-500"
                     >
-                        <option value="drinks">Drink</option>
-                        <option value="analcoholic">Analcolico</option>
-                        <option value="baked_potatoes">Patate</option>
-                        <option value="carpaccio">Carpacci</option>
-                        <option value="beers">Birre</option>
-                        <option value="boards">Taglieri</option>
-                        <option value="bottled_wine">Vini in Bottiglia</option>
-                        <option value="glass_wine">Vini in Calice</option>
-                        <option value="gin">Gin</option>
-                        <option value="liqueur">Amari</option>
-                        <option value="whiskey">Whisky</option>
-                        <option value="schiacce">Schiacce</option>
-                        <option value="rum">Rum</option>
+                        <option value="drinks">DRINK</option>
+                        <option value="analcoholic">ANALCOLICO</option>
+                        <option value="baked_potatoes">PATATE</option>
+                        <option value="carpaccio">CARPACCI</option>
+                        <option value="beers">BIRRE</option>
+                        <option value="boards">TAGLIERI</option>
+                        <option value="bottled_wine">VINI IN BOTTIGLIA</option>
+                        <option value="glass_wine">VINI IN CALICE</option>
+                        <option value="gin">GIN</option>
+                        <option value="liqueur">AMARI</option>
+                        <option value="whiskey">WHISKY</option>
+                        <option value="schiacce">SCHIACCE</option>
+                        <option value="rum">RUM</option>
                     </select>
                 </div>
 
                 <Input
-                    label="Nome"
+                    label="NOME"
                     value={name}
                     onChange={setName}
                     type="text"
@@ -120,7 +121,7 @@ export default function AddDrinkPage() {
                 {(productType === "drinks" || productType === "schiacce" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio" || productType === "baked_potatoes") && (
                     <>
                         <Input
-                            label="Ingredienti"
+                            label="INGREDIENTI"
                             value={ingredients}
                             onChange={setIngredients}
                             type="text"
@@ -131,7 +132,7 @@ export default function AddDrinkPage() {
                 {(productType === "drinks" || productType === "rum" || productType == "analcoholic" || productType == "tagboardslieri" || productType == "glass_wine" || productType == "bottled_wine" || productType === "gin" || productType === "liqueur" || productType == "whiskey" || productType == "beers") && (
                     <>
                         <Input
-                            label="Descrizione"
+                            label="DESCRIZIONE"
                             value={description}
                             onChange={setDescription}
                             type="text"
@@ -139,19 +140,15 @@ export default function AddDrinkPage() {
                     </>
                 )}
 
-                <div className="flex flex-col space-y-1">
-                    <label className="">Prezzo</label>
-                    <input
-                        type="number"
-                        placeholder="8"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        required
-                        className="focus:border-emerald-500 border m-2 p-5 bg-white/50 rounded-lg outline-none"
-                    />
-                </div>
-                <div className="flex flex-col space-y-1">
-                    <label className="">Visibilità</label>
+                <Input
+                    label="PREZZO"
+                    type="number"
+                    value={price}
+                    onChange={setPrice}
+                />
+
+                <div className="flex flex-row space-y-1">
+                    <label className="">VISIBILITA'</label>
                     <input
                         type="checkbox"
                         checked={visibility}
@@ -160,12 +157,9 @@ export default function AddDrinkPage() {
                         className="m-2 p-5 bg-white/50 border-3 border-black rounded-2xl outline-none"
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="m-2 p-5 rounded-2xl outline-none bg-emerald-700"
-                >
-                    Aggiungi
-                </button>
+                <SubmitButton
+                    label="AGGIUNGI"
+                />
             </form>
         </div>
     )

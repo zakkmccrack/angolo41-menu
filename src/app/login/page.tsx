@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { supabase } from "@/lib/supabase/supabase"
 import { useRouter } from "next/navigation"
+import Input from "@/components/admin/Input"
+import SubmitButton from "@/components/admin/SubmitButton"
 
 export default function LoginPage() {
     const [email, setEmail] = useState("")
@@ -27,25 +29,21 @@ export default function LoginPage() {
                 onSubmit={handleLogin}
                 className=""
             >
-                <input
-                    type="email"
-                    placeholder="email"
+                <Input
+                    label="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className=""
+                    type="email"
+                    onChange={setEmail}
                 />
-                <input
-                    type="password"
-                    placeholder="password"
+                <Input
+                    label="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className=""
+                    type="password"
+                    onChange={setPassword}
                 />
-                <button
-                    type="submit"
-                >
-                    Login
-                </button>
+                <SubmitButton
+                    label="Login"
+                />
             </form>
         </div>
     )

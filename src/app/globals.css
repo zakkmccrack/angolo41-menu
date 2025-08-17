@@ -17,6 +17,8 @@
 }
 
 :root {
+  --primary: #0e4d49;
+  --green-contrast: #3a4d4b;
   --background: #FBF4E9;
   --background-old: #FFEDCE;
   --foreground: #040606;
@@ -24,8 +26,12 @@
 }
 
 @theme inline {
+  --color-angolo-green: var(--primary);
+  --color-green-contrast: var(--green-contrast);
   --color-background: var(--background);
+  --color-background-old: var(--background-old);
   --color-foreground: var(--foreground);
+  --color-foreground-red: var(--foreground-red);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -34,4 +40,31 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Donau', sans-serif;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--foreground) var(--transparent);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 17px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+  
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--tertiary);
 }

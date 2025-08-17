@@ -1,21 +1,12 @@
 import { supabase } from "./supabase";
-import { Drink } from "@/types/drink";
+import { Product } from "@/types/BaseProduct";
 
-export async function getDrinks(): Promise<Drink[]> {
-    const { data, error } = await supabase.from("drinks").select("*")
+export async function getDrinks(): Promise<Product[]> {
+    const { data, error } = await supabase.from("drinks").select("*").order('name', {ascending: true})
     if (error) {
         console.error("errore: ", error.message)
         return []
     } 
 
-    return data as Drink[]
-}
-
-export async function addDrink(params:Omit<Drink, "id">) {
-    const { error } = await supabase.from("drinks").insert([params])
-
-    if (error) {
-        console.error("errore: ", error.message)
-        throw error
-    }
+    return data as Product[]
 }
