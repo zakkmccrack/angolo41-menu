@@ -1,8 +1,26 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Donau';
+  src: url('../../public/fonts/donauFont.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FBF4E9;
+  --background-old: #FFEDCE;
+  --foreground: #040606;
+  --foreground-red: #910C00;
 }
 
 @theme inline {
@@ -12,15 +30,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Donau', sans-serif;
 }
