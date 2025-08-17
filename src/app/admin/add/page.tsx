@@ -102,7 +102,7 @@ export default function AddDrinkPage() {
                 />
 
                 <div className="flex flex-row space-y-1">
-                    <label className="">VISIBILITA'</label>
+                    <label className="">VISIBILITÀ</label>
                     <input
                         type="checkbox"
                         checked={visibility}

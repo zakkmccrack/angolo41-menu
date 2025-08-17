@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabase/supabase"
 import { useRouter } from "next/navigation"
-
+import { User } from "@supabase/supabase-js"
 import { getDrinks } from "@/lib/supabase/drinks"
 import { getRum } from "@/lib/supabase/rum"
 import { getAnalcoholic } from "@/lib/supabase/analcoholic"
@@ -24,7 +24,7 @@ import CardProductAdmin from "@/components/admin/CardProductAdmin"
 export default function AdminPage() {
 
     const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState<any>(null)
+    const [user, setUser] = useState<User | null>(null)
     const router = useRouter()
     const [drinks, setDrinks] = useState<Product[]>([])
     const [rum, setRum] = useState<Product[]>([])
@@ -80,7 +80,7 @@ export default function AdminPage() {
             <div className="flex flex-row p-10 bg-linear-120 from-75% rounded-3xl text-white  bg-[url(../../public/adminBackground.svg)] bg-no-repeat bg-cover">
                 <div>
                     <p className="text-xl font-bold">Pannello Admin</p>
-                    <p>Benvenuto {user.email}</p>
+                    <p>Benvenuto {user?.email}</p>
                 </div>
                 <div>
                     <a href="/admin/add">ccccxcxcxc</a>
