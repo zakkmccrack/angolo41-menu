@@ -8,11 +8,9 @@ import SubmitButton from "@/components/admin/SubmitButton"
 
 export default function AddDrinkPage() {
     const [name, setName] = useState("")
-    const [description, setDescription] = useState("")
     const [ingredients, setIngredients] = useState("")
     const [price, setPrice] = useState("")
     const [visibility, setVisibility] = useState(true)
-    const [type, setType] = useState("")
     const [productType, setProductType] = useState("drinks");
 
     const router = useRouter()
@@ -20,23 +18,7 @@ export default function AddDrinkPage() {
     const handleAdd = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        if (productType === "drinks" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio") {
-            const { error } = await supabase.from(productType).insert([
-                {
-                    name,
-                    description,
-                    ingredients,
-                    price: parseFloat(price),
-                    visibility
-                },
-            ])
-            if (error) {
-                alert("errore: " + error.message)
-            } else {
-                alert(name + " aggiunto con successo")
-                router.push("/admin/add")
-            }
-        } else if (productType === "baked_potatoes" || productType === "schiacce") {
+        if (productType === "drinks" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio" || productType === "baked_potatoes" || productType === "schiacce" || productType === "glass_wine" || productType === "bottled_wine" || productType === "beers") {
             const { error } = await supabase.from(productType).insert([
                 {
                     name,
@@ -55,23 +37,6 @@ export default function AddDrinkPage() {
             const { error } = await supabase.from(productType).insert([
                 {
                     name,
-                    description,
-                    price: parseFloat(price),
-                    visibility
-                },
-            ])
-            if (error) {
-                alert("errore: " + error.message)
-            } else {
-                alert(name + " aggiunto con successo")
-                router.push("/admin/add")
-            }
-        } else if (productType === "glass_wine" || productType === "bottled_wine" || productType === "beers") {
-            const { error } = await supabase.from(productType).insert([
-                {
-                    name,
-                    type,
-                    description,
                     price: parseFloat(price),
                     visibility
                 },
@@ -124,17 +89,6 @@ export default function AddDrinkPage() {
                             label="INGREDIENTI"
                             value={ingredients}
                             onChange={setIngredients}
-                            type="text"
-                        />
-                    </>
-                )}
-
-                {(productType === "drinks" || productType === "rum" || productType == "analcoholic" || productType == "tagboardslieri" || productType == "glass_wine" || productType == "bottled_wine" || productType === "gin" || productType === "liqueur" || productType == "whiskey" || productType == "beers") && (
-                    <>
-                        <Input
-                            label="DESCRIZIONE"
-                            value={description}
-                            onChange={setDescription}
                             type="text"
                         />
                     </>
