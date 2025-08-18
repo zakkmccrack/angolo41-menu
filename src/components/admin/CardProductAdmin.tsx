@@ -1,12 +1,12 @@
 import { supabase } from "@/lib/supabase/supabase"
 import { Product } from "@/types/BaseProduct"
+import Link from "next/link"
 import { useState } from "react"
 
 type Props = {
     product: Product
     table: string
 }
-
 
 export default function CardProductAdmin({ product, table }: Props) {
 
@@ -19,7 +19,7 @@ export default function CardProductAdmin({ product, table }: Props) {
         else console.log(error)
     }
     return (
-        <div className="flex flex-col flex-wrap justify-between rounded-lg shadow-md p-2 mb-10 min-w-fit bg-white border-1" >
+        <div className="flex flex-col flex-wrap justify-between rounded-lg shadow-black shadow-xl p-2 mb-10 min-w-fit bg-white border-1" >
             <div className="flex flex-row justify-around">
                 <p className="p-2 font-bold text-xl">{product.name}</p>
                 <p className="p-2">{product.price}</p>
@@ -50,7 +50,7 @@ export default function CardProductAdmin({ product, table }: Props) {
                     className={`m-2 border-3 border-black rounded-2xl outline-none`}
                 />
             </div>
-            <a href="/admin/edit" className="p-2 border-2 rounded-sm text-center" ><button>EDIT</button></a>
+            <Link href={{ pathname: '/admin/edit', query: { table: table, id: product.id } }} className="p-2 border-2 rounded-sm text-center" >EDIT</Link>
         </div>
     )
 }

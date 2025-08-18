@@ -10,6 +10,7 @@ export default function AddDrinkPage() {
     const [name, setName] = useState("")
     const [ingredients, setIngredients] = useState("")
     const [price, setPrice] = useState("")
+    const [type, setType] = useState("")
     const [visibility, setVisibility] = useState(true)
     const [productType, setProductType] = useState("drinks");
 
@@ -31,9 +32,9 @@ export default function AddDrinkPage() {
                 alert("errore: " + error.message)
             } else {
                 alert(name + " aggiunto con successo")
-                router.push("/admin/add")
+                router.push("/admin")
             }
-        } else if (productType === "whiskey" || productType === "rum" || productType == "liqueur" || productType == "gin") {
+        } else if (productType === "whiskey" || productType === "rum" || productType == "liqueur" || productType == "gin" || productType === "draft_drinks") {
             const { error } = await supabase.from(productType).insert([
                 {
                     name,
@@ -45,7 +46,7 @@ export default function AddDrinkPage() {
                 alert("errore: " + error.message)
             } else {
                 alert(name + " aggiunto con successo")
-                router.push("/admin/add")
+                router.push("/admin")
             }
         }
     }
@@ -65,6 +66,8 @@ export default function AddDrinkPage() {
                         <option value="baked_potatoes">PATATE</option>
                         <option value="carpaccio">CARPACCI</option>
                         <option value="beers">BIRRE</option>
+                        <option value="draft_beers">BIRRE ALLA SPINA</option>
+                        <option value="draft_drinks">BIBITE ALLA SPINA</option>
                         <option value="boards">TAGLIERI</option>
                         <option value="bottled_wine">VINI IN BOTTIGLIA</option>
                         <option value="glass_wine">VINI IN CALICE</option>
@@ -89,6 +92,17 @@ export default function AddDrinkPage() {
                             label="INGREDIENTI"
                             value={ingredients}
                             onChange={setIngredients}
+                            type="text"
+                        />
+                    </>
+                )}
+
+                {(productType === "beers" || productType === "bottled_wine" || productType == "glass_wine" || productType == "draft_beers") && (
+                    <>
+                        <Input
+                            label="TYPE"
+                            value={type}
+                            onChange={setType}
                             type="text"
                         />
                     </>

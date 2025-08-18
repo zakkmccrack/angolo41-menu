@@ -24,7 +24,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div>
+        <div className="p-5 flex flex-col items-center justify-center min-h-screen w-full">
             <form
                 onSubmit={handleLogin}
                 className=""
