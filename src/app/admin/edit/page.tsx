@@ -5,7 +5,6 @@ import { Suspense, useEffect, useState } from "react"
 
 import { getProduct } from "@/lib/supabase/getElementById"
 import { Product } from "@/types/BaseProduct"
-import { assert } from "console"
 import { supabase } from "@/lib/supabase/supabase"
 import Input from "@/components/admin/Input"
 import SubmitButton from "@/components/admin/SubmitButton"
@@ -26,7 +25,7 @@ export default function EditPage() {
         const [name, setName] = useState("")
         const [ingredients, setIngredients] = useState("")
         const [price, setPrice] = useState("")
-        const [productType, setProductType] = useState(table)
+        const [productType] = useState(table)
         const [type, setType] = useState("bianco");
 
         useEffect(() => {

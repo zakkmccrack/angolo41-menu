@@ -19,7 +19,7 @@ export default function AddDrinkPage() {
     const handleAdd = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        if (productType === "drinks" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio" || productType === "baked_potatoes" || productType === "schiacce" || productType === "glass_wine" || productType === "bottled_wine" || productType === "beers") {
+        if (productType === "drinks" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio" || productType === "baked_potatoes" || productType === "schiacce") {
             const { error } = await supabase.from(productType).insert([
                 {
                     name,
@@ -38,6 +38,21 @@ export default function AddDrinkPage() {
             const { error } = await supabase.from(productType).insert([
                 {
                     name,
+                    price: parseFloat(price),
+                    visibility
+                },
+            ])
+            if (error) {
+                alert("errore: " + error.message)
+            } else {
+                alert(name + " aggiunto con successo")
+                router.push("/admin")
+            }
+        } else if (productType === "glass_wine" || productType === "bottled_wine" || productType === "beers" || productType === "draft_beers") {
+            const { error } = await supabase.from(productType).insert([
+                {
+                    name,
+                    type,
                     price: parseFloat(price),
                     visibility
                 },

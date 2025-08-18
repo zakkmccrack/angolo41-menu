@@ -19,15 +19,15 @@ export default function CardProductAdmin({ product, table }: Props) {
         else console.log(error)
     }
     return (
-        <div className="flex flex-col flex-wrap justify-between rounded-lg shadow-black shadow-xl p-2 mb-10 min-w-fit bg-white border-1" >
+        <div className="flex flex-col flex-wrap justify-between rounded-lg shadow-black shadow-md p-2 mb-5 min-w-fit bg-white border-1" >
             <div className="flex flex-row justify-around">
-                <p className="p-2 font-bold text-xl">{product.name}</p>
-                <p className="p-2">{product.price}</p>
+                <p className="p-2 font-bold text-2xl">{product.name}</p>
+                <p className="p-2 font-bold text-2xl">{product.price}</p>
             </div>
             <div>
                 {(product.ingredients != null) && (
                     <>
-                        <p className="p-2">{product.ingredients}</p>
+                        <p className="p-2 text-xl">{product.ingredients}</p>
                     </>
                 )
                 }
@@ -35,7 +35,7 @@ export default function CardProductAdmin({ product, table }: Props) {
             <div>
                 {(product.type != null) && (
                     <>
-                        <p className="p-2">{product.type}</p>
+                        <p className="p-2 text-xl">{product.type}</p>
                     </>
                 )
                 }
@@ -50,7 +50,7 @@ export default function CardProductAdmin({ product, table }: Props) {
                     className={`m-2 border-3 border-black rounded-2xl outline-none`}
                 />
             </div>
-            <Link href={{ pathname: '/admin/edit', query: { table: table, id: product.id } }} className="p-2 border-2 rounded-sm text-center" >EDIT</Link>
+            <Link href={{ pathname: '/admin/edit', query: { table: table, id: product.id } }} className="p-2 border-2 rounded-sm text-center font-bold text-xl" >EDIT</Link>
         </div>
     )
 }

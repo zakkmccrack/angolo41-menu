@@ -84,7 +84,7 @@ export default function AdminPage() {
 
     return (
         <div className="flex flex-col justify-around bg-background p-6 max-w-full mx-auto w-full">
-            <div className="flex flex-row justify-around p-10 bg-linear-120 from-75% rounded-3xl text-white  bg-[url(../../public/adminBackground.svg)] bg-no-repeat bg-cover">
+            <div className="flex flex-row justify-around p-10 bg-linear-120 from-75% rounded-xl text-white bg-[url(../../public/adminBackground.svg)] bg-no-repeat bg-cover">
                 <div>
                     <p className="text-xl font-bold">Pannello Admin</p>
                     <p>Benvenuto {user?.email}</p>
@@ -100,7 +100,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Drinks</p>
                 {drinks.length === 0 && <p>Nessun Drink Disponibile</p>}
-                <div className="flex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {drinks.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -114,7 +114,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Analcolici</p>
                 {analcoholic.length === 0 && <p>Nessun Analcolico Disponibile</p>}
-                <div className="flex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {analcoholic.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -128,7 +128,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Rum</p>
                 {rum.length === 0 && <p>Nessun Rum Disponibile</p>}
-                <div className="flex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {rum.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -142,7 +142,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Vini in Bottiglia</p>
                 {bottledWines.length === 0 && <p>Nessun Vino In Bottiglia Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {bottledWines.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -156,7 +156,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Birre</p>
                 {beers.length === 0 && <p>Nessuna Birra Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {beers.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -170,7 +170,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Birre spina</p>
                 {draft_beers.length === 0 && <p>Nessuna Birra alla spina Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {draft_beers.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -184,7 +184,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Bibite spina</p>
                 {draft_drinks.length === 0 && <p>Nessuna Bibibta alla spina Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {draft_drinks.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -198,7 +198,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Vini in Calice</p>
                 {glassWines.length === 0 && <p>Nessun Vino In Calice Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {glassWines.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -212,7 +212,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Schiacce</p>
                 {schiacce.length === 0 && <p>Nessuna Schiaccia Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {schiacce.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -226,7 +226,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Carpacci</p>
                 {carpaccio.length === 0 && <p>Nessun Carpaccio Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {carpaccio.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -240,7 +240,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Amari</p>
                 {liqueur.length === 0 && <p>Nessun Amaro Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {liqueur.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -254,7 +254,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Gin</p>
                 {gin.length === 0 && <p>Nessun Gin Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {gin.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -268,8 +268,8 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Whisky</p>
                 {whiskeys.length === 0 && <p>Nessun whisky Disponibile</p>}
-                <div className="lex flex-col">
-                    {rum.map((d) => (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {whiskeys.map((d) => (
                         <CardProductAdmin
                             key={d.id}
                             product={d}
@@ -282,7 +282,7 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Taglieri</p>
                 {boards.length === 0 && <p>Nessun Tagliere Disponibile</p>}
-                <div className="lex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {boards.map((d) => (
                         <CardProductAdmin
                             key={d.id}
@@ -296,8 +296,8 @@ export default function AdminPage() {
             <div className="p-5 max-h-fit border-t-6">
                 <p className="text-4xl p-2 font-bold">Patate</p>
                 {potatoes.length === 0 && <p>Nessuna Patata Disponibile</p>}
-                <div className="lex flex-col">
-                    {rum.map((d) => (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {potatoes.map((d) => (
                         <CardProductAdmin
                             key={d.id}
                             product={d}

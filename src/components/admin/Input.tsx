@@ -7,7 +7,7 @@ export default function Input({ label, value, onChange, type = "text" }: { label
                 placeholder={label}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                className="focus:border-emerald-500 border m-2 p-5 bg-white/50 rounded-lg outline-none"
+                className="focus:border-angolo-green border m-2 p-5 bg-white/50 rounded-lg outline-none"
             />
         </div>
     )
