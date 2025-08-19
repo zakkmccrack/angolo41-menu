@@ -73,7 +73,7 @@ export default function AdminPage() {
 
             {tables.map((table) => (
                 <div className="p-5 max-h-fit border-t-6" key={table}>
-                    <p className="text-4xl p-2 font-bold">{table}</p>
+                    <p className="text-4xl p-2 font-bold">{table.toUpperCase()}</p>
                     {table.length === 0 && <p>No {table} Disponibile</p>}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4" key={table}>
                         {tableProducts[table].map((d) => (
