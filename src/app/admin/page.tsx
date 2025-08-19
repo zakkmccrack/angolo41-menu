@@ -9,6 +9,7 @@ import { readTableFromName } from "@/lib/supabase/services/productRepo"
 
 import { Product } from "@/types/BaseProduct"
 import CardProductAdmin from "@/components/admin/CardProductAdmin"
+import Spinner from "@/components/LoadingComponent"
 
 export default function AdminPage() {
 
@@ -54,7 +55,7 @@ export default function AdminPage() {
         fetchData();
     }, [])
 
-    if (loading) return <p>Loading</p>
+    if (loading) return(<Spinner/>)
 
     return (
         <div className="flex flex-col justify-around bg-background p-6 max-w-full mx-auto w-full">

@@ -8,11 +8,12 @@ import { Product } from "@/types/BaseProduct"
 import { supabase } from "@/lib/supabase/supabase"
 import Input from "@/components/admin/Input"
 import SubmitButton from "@/components/admin/SubmitButton"
+import Spinner from "@/components/LoadingComponent"
 
 
 export default function EditPage() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Spinner/>}>
             <Content />
         </Suspense>
     );
