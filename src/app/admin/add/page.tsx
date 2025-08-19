@@ -19,7 +19,7 @@ export default function AddDrinkPage() {
     const handleAdd = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        if (productType === "drinks" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio" || productType === "baked_potatoes" || productType === "schiacce") {
+        if (productType === "drinks" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio" || productType === "baked_potatoes" || productType === "schiacce" || productType == "starter") {
             const { error } = await supabase.from(productType).insert([
                 {
                     name,
@@ -78,19 +78,21 @@ export default function AddDrinkPage() {
                     >
                         <option value="drinks">DRINK</option>
                         <option value="analcoholic">ANALCOLICO</option>
-                        <option value="baked_potatoes">PATATE</option>
-                        <option value="carpaccio">CARPACCI</option>
                         <option value="beers">BIRRE</option>
                         <option value="draft_beers">BIRRE ALLA SPINA</option>
                         <option value="draft_drinks">BIBITE ALLA SPINA</option>
-                        <option value="boards">TAGLIERI</option>
+                        <option value="bottle_drinks">BIBITE IN BOTTIGLIA</option>
                         <option value="bottled_wine">VINI IN BOTTIGLIA</option>
                         <option value="glass_wine">VINI IN CALICE</option>
+                        <option value="schiacce">SCHIACCE</option>
+                        <option value="boards">TAGLIERI</option>
+                        <option value="baked_potatoes">PATATE</option>
+                        <option value="carpaccio">CARPACCI</option>
+                        <option value="starter">STARTER</option>
                         <option value="gin">GIN</option>
+                        <option value="rum">RUM</option>
                         <option value="liqueur">AMARI</option>
                         <option value="whiskey">WHISKY</option>
-                        <option value="schiacce">SCHIACCE</option>
-                        <option value="rum">RUM</option>
                     </select>
                 </div>
 
