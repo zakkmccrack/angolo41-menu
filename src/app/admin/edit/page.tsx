@@ -76,6 +76,7 @@ export default function EditPage() {
 
         return (
             <div>
+                UPDATE EDIT PAGE
                 {(product != null) && (
                     <div className="p-5 flex flex-col items-center justify-center min-h-screen w-full">
                         <form onSubmit={handleChange}>
