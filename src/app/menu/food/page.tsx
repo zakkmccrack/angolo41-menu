@@ -56,7 +56,6 @@ export default function Food() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"schiacce"}
                         />
                     ))}
                 </>
@@ -68,7 +67,6 @@ export default function Food() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"starter"}
                         />
                     ))}
                 </>
@@ -80,7 +78,6 @@ export default function Food() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"carpaccio"}
                         />
                     ))}
                 </>
@@ -92,7 +89,6 @@ export default function Food() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"baked_potatoes"}
                         />
                     ))}
                 </>

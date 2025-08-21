@@ -6,11 +6,12 @@ import { AnimatePresence, motion } from "motion/react"
 
 type Props = {
     product: Product
-    table: string
 }
 
 export default function CardProduct({ product }: Props) {
     const [isVisible, setIsVisible] = useState(false)
+
+    if(!product.visibility) return(<></>)
 
     return (
         <motion.div
@@ -21,7 +22,7 @@ export default function CardProduct({ product }: Props) {
             exit={{ opacity: 0, scale: 0 }}
         >
             <div className="flex flex-row justify-around">
-                <p className="p-2 font-bold text-2xl text-foreground-red">{product.name.toUpperCase()}</p>
+                <p className="p-2 font-bold underline text-3xl text-foreground-red">{product.name.toUpperCase()}</p>
                 <p className="p-2 font-bold text-2xl">{product.price}</p>
             </div>
             <div>

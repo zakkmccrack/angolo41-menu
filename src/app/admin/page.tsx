@@ -41,7 +41,7 @@ export default function AdminPage() {
             const result: Record<string, Product[]> = {}
 
             for (const table of tables) {
-                const prods = await readTableFromName(table); // <-- prods è Product[]
+                const prods = await readTableFromName(table);
                 result[table] = prods
                 { console.log(table) };
 

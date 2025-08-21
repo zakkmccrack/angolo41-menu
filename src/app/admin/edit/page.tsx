@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
+import { Suspense, use, useEffect, useState } from "react"
 
 import { getProduct } from "@/lib/supabase/getElementById"
 import { Product } from "@/types/BaseProduct"
@@ -9,11 +9,12 @@ import { supabase } from "@/lib/supabase/supabase"
 import Input from "@/components/admin/Input"
 import SubmitButton from "@/components/admin/SubmitButton"
 import Spinner from "@/components/LoadingComponent"
+import { desc } from "motion/react-client"
 
 
 export default function EditPage() {
     return (
-        <Suspense fallback={<Spinner/>}>
+        <Suspense fallback={<Spinner />}>
             <Content />
         </Suspense>
     );
@@ -28,6 +29,7 @@ export default function EditPage() {
         const [price, setPrice] = useState("")
         const [productType] = useState(table)
         const [type, setType] = useState("bianco");
+        const [description, setDescription] = useState("")
 
         useEffect(() => {
             async function loadAll() {
@@ -38,6 +40,7 @@ export default function EditPage() {
                     setIngredients(product.ingredients)
                     setType(product.type)
                     setPrice(product.price.toString())
+                    setDescription(product.description)
                 }
             }
             loadAll()
@@ -46,7 +49,7 @@ export default function EditPage() {
         const handleChange = async (e: React.FormEvent) => {
             e.preventDefault()
 
-            if (productType === "drinks" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio" || productType === "baked_potatoes" || productType === "schiacce" || productType === "glass_wine" || productType === "bottled_wine" || productType === "beers") {
+            if (productType === "drinks" || productType == "analcoholic" || productType == "boards" || productType == "carpaccio" || productType === "baked_potatoes" || productType === "schiacce" || productType === "beers") {
                 const { error } = await supabase.from(productType).update([
                     {
                         "name": name,
@@ -59,13 +62,42 @@ export default function EditPage() {
                 } else {
                     alert(name + " aggiornato con successo")
                 }
-            } else if (productType === "whiskey" || productType === "rum" || productType == "liqueur" || productType == "gin" || productType === "draft_drinks") {
+            } else if (productType === "draft_drinks") {
                 const { error } = await supabase.from(productType).update(
                     {
                         "name": name,
                         "price": parseFloat(price),
                     },
                 )
+                if (error) {
+                    alert("errore: " + error.message)
+                } else {
+                    alert(name + " aggiornato con successo")
+                }
+            } else if (productType === "glass_wine" || productType === "bottled_wine") {
+                const { error } = await supabase.from(productType).update([
+                    {
+                        "name": name,
+                        "ingredients": ingredients,
+                        "type": type,
+                        "description": description,
+                        "price": parseFloat(price),
+                    },
+                ]).eq("id", product?.id)
+                if (error) {
+                    alert("errore: " + error.message)
+                } else {
+                    alert(name + " aggiornato con successo")
+                }
+            } else if (productType === "whiskey" || productType === "rum" || productType == "liqueur" || productType == "gin") {
+                const { error } = await supabase.from(productType).update([
+                    {
+                        "name": name,
+                        "ingredients": ingredients,
+                        "description": description,
+                        "price": parseFloat(price),
+                    },
+                ]).eq("id", product?.id)
                 if (error) {
                     alert("errore: " + error.message)
                 } else {
@@ -103,6 +135,16 @@ export default function EditPage() {
                                         label="TYPE"
                                         value={type}
                                         onChange={setType}
+                                        type="text"
+                                    />
+                                </>
+                            )}
+                            {(productType === "whiskey" || productType === "rum" || productType == "liqueur" || productType == "gin" || productType === "glass_wine" || productType === "bottled_wine") && (
+                                <>
+                                    <Input
+                                        label="DESCRIPTION"
+                                        value={description}
+                                        onChange={setDescription}
                                         type="text"
                                     />
                                 </>

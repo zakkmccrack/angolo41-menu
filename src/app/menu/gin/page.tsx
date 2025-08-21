@@ -19,7 +19,7 @@ export default function Wines() {
             const result: Record<string, Product[]> = {}
 
             for (const table of tables) {
-                const prods = await readTableFromName(table); // <-- prods è Product[]
+                const prods = await readTableFromName(table);
                 result[table] = prods
             }
 
@@ -53,7 +53,6 @@ export default function Wines() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"gin"}
                         />
                     ))}
                 </>

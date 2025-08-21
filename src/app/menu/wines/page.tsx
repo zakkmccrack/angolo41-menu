@@ -2,12 +2,12 @@
 
 import CardProduct from "@/components/frontend/CardProduct";
 import Spinner from "@/components/LoadingComponent";
-import { readTableFromName } from "@/lib/supabase/services/productRepo";
 import { Product } from "@/types/BaseProduct";
 import { useEffect, useState } from "react";
+import { getWineFromType } from "@/lib/supabase/bottled_wine";
 
 export default function Wines() {
-    const tables = ["bottled_wine"]
+    const types = ["Bianco", "Bollicine", "Rosso"]
     const [loading, setLoading] = useState(true)
     const [tableProducts, setTableProducts] = useState<Record<string, Product[]>>({})
     const [productType, setProductType] = useState("all");
@@ -18,9 +18,9 @@ export default function Wines() {
 
             const result: Record<string, Product[]> = {}
 
-            for (const table of tables) {
-                const prods = await readTableFromName(table); // <-- prods è Product[]
-                result[table] = prods
+            for (const type of types) {
+                const prods = await getWineFromType(type);
+                result[type] = prods
             }
 
             setTableProducts(result);
@@ -43,24 +43,46 @@ export default function Wines() {
                     className="w-md border text-2xl p-2 rounded-md focus:border-emerald-500 "
                 >
                     <option value="all">TUTTI I PRODOTTI</option>
-                    <option value="BIANCHI">BIANCHI</option>
-                    <option value="ROSSI">ROSSI</option>
-                    <option value="BOLLICINE">BOLLICINE</option>
+                    <option value="Bianco">BIANCHI</option>
+                    <option value="Rosso">ROSSI</option>
+                    <option value="Bollicine">BOLLICINE</option>
 
                 </select>
             </div>
-            {(productType === "bottled_wine" || productType === "all") && (
+            {(productType === "Bianco" || productType === "all") && (
                 <>
-                    <p className="p-2 font-bold text-3xl text-foreground-red text-center">Vini in Bottiglia</p>
-                    {tableProducts["bottled_wine"].map((d) => (
+                    <p className="p-2 font-bold text-3xl text-foreground-red text-center">BIANCHI</p>
+                    {tableProducts["Bianco"].map((d) => (
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"bottled_wine"}
                         />
                     ))}
                 </>
             )}
+            {(productType === "Rosso" || productType === "all") && (
+                <>
+                    <p className="p-2 font-bold text-3xl text-foreground-red text-center">ROSSI</p>
+                    {tableProducts["Rosso"].map((d) => (
+                        <CardProduct
+                            key={d.id}
+                            product={d}
+                        />
+                    ))}
+                </>
+            )}
+            {(productType === "Bollicine" || productType === "all") && (
+                <>
+                    <p className="p-2 font-bold text-3xl text-foreground-red text-center">BOLLICINE</p>
+                    {tableProducts["Bollicine"].map((d) => (
+                        <CardProduct
+                            key={d.id}
+                            product={d}
+                        />
+                    ))}
+                </>
+            )}
+
         </div >
     )
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="p-4">
-      <h1 className="text-center text-6xl font-bold text-foreground-red">ANGOLO 41</h1>
+      <h1 className="text-center text-8xl font-bold text-foreground-red">ANGOLO 41</h1>
       <div className="min-h-full min-w-full flex flex-wrap flex-col justify-around mt-10">
         {/*carta dei drink*/}
         <Link href={"/menu/bevute"}>
@@ -26,7 +26,6 @@ export default function Home() {
         <Link href={"/menu/distillati"}>
           <MenuCardView label="DISTILLATI" />
         </Link>
-
       </div>
     </div>
   );

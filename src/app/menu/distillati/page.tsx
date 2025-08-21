@@ -55,7 +55,6 @@ export default function Wines() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"whiskey"}
                         />
                     ))}
                 </>
@@ -67,7 +66,6 @@ export default function Wines() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"rum"}
                         />
                     ))}
                 </>
@@ -79,7 +77,6 @@ export default function Wines() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"liqueur"}
                         />
                     ))}
                 </>
