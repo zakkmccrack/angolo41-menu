@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { use, useState } from "react"
 import { supabase } from "@/lib/supabase/supabase"
 import { useRouter } from "next/navigation"
 import Input from "@/components/admin/Input"
@@ -11,6 +11,7 @@ export default function AddDrinkPage() {
     const [ingredients, setIngredients] = useState("")
     const [price, setPrice] = useState("")
     const [type, setType] = useState("")
+    const [description, setDescription] = useState("")
     const [visibility, setVisibility] = useState(true)
     const [productType, setProductType] = useState("drinks");
 
@@ -34,7 +35,7 @@ export default function AddDrinkPage() {
                 alert(name + " aggiunto con successo")
                 router.push("/admin")
             }
-        } else if (productType === "whiskey" || productType === "rum" || productType == "liqueur" || productType == "gin" || productType === "draft_drinks") {
+        } else if (productType === "draft_drinks") {
             const { error } = await supabase.from(productType).insert([
                 {
                     name,
@@ -48,13 +49,44 @@ export default function AddDrinkPage() {
                 alert(name + " aggiunto con successo")
                 router.push("/admin")
             }
-        } else if (productType === "glass_wine" || productType === "bottled_wine" || productType === "beers" || productType === "draft_beers") {
+        } else if (productType === "beers" || productType === "draft_beers") {
             const { error } = await supabase.from(productType).insert([
                 {
                     name,
                     type,
                     price: parseFloat(price),
                     visibility
+                },
+            ])
+            if (error) {
+                alert("errore: " + error.message)
+            } else {
+                alert(name + " aggiunto con successo")
+                router.push("/admin")
+            }
+        } else if (productType === "whiskey" || productType === "rum" || productType == "liqueur" || productType == "gin") {
+            const { error } = await supabase.from(productType).insert([
+                {
+                    name,
+                    price: parseFloat(price),
+                    visibility,
+                    description
+                },
+            ])
+            if (error) {
+                alert("errore: " + error.message)
+            } else {
+                alert(name + " aggiunto con successo")
+                router.push("/admin")
+            }
+        } else if (productType === "glass_wine" || productType === "bottled_wine") {
+            const { error } = await supabase.from(productType).insert([
+                {
+                    name,
+                    type,
+                    price: parseFloat(price),
+                    visibility,
+                    description
                 },
             ])
             if (error) {
@@ -120,6 +152,17 @@ export default function AddDrinkPage() {
                             label="TYPE"
                             value={type}
                             onChange={setType}
+                            type="text"
+                        />
+                    </>
+                )}
+
+                {(productType === "gin" || productType === "bottled_wine" || productType == "glass_wine" || productType == "whiskey" || productType === "rum" || productType === "liqueur") && (
+                    <>
+                        <Input
+                            label="DESCRIPTION"
+                            value={description}
+                            onChange={setDescription}
                             type="text"
                         />
                     </>

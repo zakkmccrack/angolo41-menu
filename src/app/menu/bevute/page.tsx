@@ -7,7 +7,7 @@ import { Product } from "@/types/BaseProduct";
 import { useEffect, useState } from "react";
 
 export default function Drinks() {
-    const tables = ["drinks", "analcoholic"]
+    const tables = ["drinks", "analcoholic", "glass_wine"]
     const [loading, setLoading] = useState(true)
     const [tableProducts, setTableProducts] = useState<Record<string, Product[]>>({})
     const [productType, setProductType] = useState("all");
@@ -22,7 +22,7 @@ export default function Drinks() {
                 const prods = await readTableFromName(table); // <-- prods è Product[]
                 result[table] = prods
             }
-            
+
             setTableProducts(result);
             setLoading(false)
 
@@ -35,7 +35,7 @@ export default function Drinks() {
 
     return (
         <div className="flex flex-col justify-around bg-background p-6 max-w-full mx-auto w-full">
-            <p className="text-center p-2 font-bold text-8xl text-foreground-red">FOOD</p>
+            <p className="text-center p-2 font-bold text-8xl text-foreground-red">BEVUTE</p>
             <div className="flex justify-center">
                 <select
                     value={productType}
@@ -45,6 +45,7 @@ export default function Drinks() {
                     <option value="all">TUTTI I PRODOTTI</option>
                     <option value="drinks">DRINKS</option>
                     <option value="analcoholic">ANALCOLICI</option>
+                    <option value="glass_wine">VINI AL CALICE</option>
                 </select>
             </div>
             {(productType === "drinks" || productType === "all") && (
@@ -54,7 +55,6 @@ export default function Drinks() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"drinks"}
                         />
                     ))}
                 </>
@@ -66,7 +66,17 @@ export default function Drinks() {
                         <CardProduct
                             key={d.id}
                             product={d}
-                            table={"analcoholic"}
+                        />
+                    ))}
+                </>
+            )}
+            {(productType === "glass_wine" || productType === "all") && (
+                <>
+                    <p className="p-2 font-bold text-3xl text-foreground-red text-center">Vini al calice</p>
+                    {tableProducts["glass_wine"].map((d) => (
+                        <CardProduct
+                            key={d.id}
+                            product={d}
                         />
                     ))}
                 </>
