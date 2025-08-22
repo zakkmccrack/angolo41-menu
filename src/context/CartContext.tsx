@@ -2,6 +2,7 @@
 
 import { Product } from "@/types/BaseProduct"
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { Bounce, toast } from "react-toastify";
 
 type CartContextType = {
     cart: Product[];
@@ -26,13 +27,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     const addToCart = (product: Product) => {
         setCart((prev) => [...prev, product]);
-        console.log(product.name + " added to cart")
-        console.log(cart)
+        toast.success('RODOTTO AGGIUNTO!', {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+        });
     }
 
     const removeFromCart = (name: string) => {
-        setCart((prev) => prev.filter((p) => p.name !== name
-        ))
+        setCart((prev) => prev.filter((p) => p.name !== name))
     }
 
     const clearCart = () => setCart([]);

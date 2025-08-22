@@ -23,6 +23,8 @@
   --background-old: #FFEDCE;
   --foreground: #040606;
   --foreground-red: #910C00;
+
+  --toastify-color-success: var(--primary)
 }
 
 @theme inline {

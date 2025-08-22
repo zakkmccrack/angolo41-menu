@@ -17,13 +17,12 @@ export default function CardProduct({ product }: Props) {
     return (
         <motion.div
             className="flex flex-col flex-wrap justify-between rounded-lg shadow-black shadow-md p-2 mb-5 min-w-fit bg-white border-1"
-            onClick={() => setIsVisible(!isVisible)}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
         >
-            <div className="flex flex-row justify-around">
-                <p className="p-2 font-bold underline text-3xl text-foreground-red">{product.name.toUpperCase()}</p>
+            <div className="flex flex-row justify-around border-b-2">
+                <p className="p-2 font-bold text-3xl text-foreground-red">{product.name.toUpperCase()}</p>
                 <p className="p-2 font-bold text-2xl">{product.price}</p>
             </div>
             <div>
@@ -42,16 +41,25 @@ export default function CardProduct({ product }: Props) {
                 )
                 }
             </div>
-            <button
-                onClick={() => addToCart(product)}
-                className="bg-emerald-500 text-white px-3 py-1 rounded-full hover:bg-emerald-600"
-            >
-                +
-            </button>
+
+            <div className="flex flex-row justify-around w-full pt-2">
+                {product.description && (
+                    <button onClick={() => setIsVisible(!isVisible)} className="bg-angolo-green text-white px-3 py-1 rounded-md hover:bg-green-contrast">
+                        {(!isVisible) ? (<p>SHOW INFO</p>) : (<p>HIDE INFO</p>)}
+                    </button>
+                )}
+                <button
+                    onClick={() => addToCart(product)}
+                    className="bg-angolo-green text-white px-3 py-1 rounded-md hover:bg-green-contrast"
+                >
+                    ADD TO CART
+                </button>
+            </div>
+
             <AnimatePresence>
                 {isVisible && product.description && (
                     <motion.div key="desc"
-                        initial={{ opacity: -5.5, height: 0 }}
+                        initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: "easeIn" }}
