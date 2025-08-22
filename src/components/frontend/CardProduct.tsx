@@ -1,6 +1,6 @@
 import { Product } from "@/types/BaseProduct"
 import { useState } from "react"
-
+import { useCart } from "@/context/CartContext";
 import { AnimatePresence, motion } from "motion/react"
 
 
@@ -10,8 +10,9 @@ type Props = {
 
 export default function CardProduct({ product }: Props) {
     const [isVisible, setIsVisible] = useState(false)
+    const { addToCart } = useCart();
 
-    if(!product.visibility) return(<></>)
+    if (!product.visibility) return (<></>)
 
     return (
         <motion.div
@@ -41,6 +42,12 @@ export default function CardProduct({ product }: Props) {
                 )
                 }
             </div>
+            <button
+                onClick={() => addToCart(product)}
+                className="bg-emerald-500 text-white px-3 py-1 rounded-full hover:bg-emerald-600"
+            >
+                +
+            </button>
             <AnimatePresence>
                 {isVisible && product.description && (
                     <motion.div key="desc"
