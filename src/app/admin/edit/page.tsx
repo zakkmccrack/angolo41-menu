@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams } from "next/navigation"
-import { Suspense, use, useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 
 import { getProduct } from "@/lib/supabase/getElementById"
 import { Product } from "@/types/BaseProduct"
@@ -9,7 +9,6 @@ import { supabase } from "@/lib/supabase/supabase"
 import Input from "@/components/admin/Input"
 import SubmitButton from "@/components/admin/SubmitButton"
 import Spinner from "@/components/LoadingComponent"
-import { desc } from "motion/react-client"
 
 
 export default function EditPage() {

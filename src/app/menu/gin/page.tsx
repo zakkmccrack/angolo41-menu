@@ -10,7 +10,6 @@ export default function Wines() {
     const tables = ["gin"]
     const [loading, setLoading] = useState(true)
     const [tableProducts, setTableProducts] = useState<Record<string, Product[]>>({})
-    const [productType, setProductType] = useState("all");
 
     useEffect(() => {
 
@@ -36,27 +35,12 @@ export default function Wines() {
     return (
         <div className="flex flex-col justify-around bg-background p-6 max-w-full mx-auto w-full">
             <p className="text-center p-2 font-bold text-8xl text-foreground-red">GIN</p>
-            <div className="flex justify-center">
-                <select
-                    value={productType}
-                    onChange={(e) => setProductType(e.target.value)}
-                    className="w-md border text-2xl p-2 rounded-md focus:border-emerald-500 "
-                >
-                    <option value="all">TUTTI I PRODOTTI</option>
-
-                </select>
-            </div>
-            {(productType === "gin" || productType === "all") && (
-                <>
-                    <p className="p-2 font-bold text-3xl text-foreground-red text-center">GIN</p>
-                    {tableProducts["gin"].map((d) => (
-                        <CardProduct
-                            key={d.id}
-                            product={d}
-                        />
-                    ))}
-                </>
-            )}
-        </div >
+            {tableProducts["gin"].map((d) => (
+                <CardProduct
+                    key={d.id}
+                    product={d}
+                />
+            ))}
+        </div>
     )
 }

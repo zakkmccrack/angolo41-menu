@@ -1,6 +1,6 @@
 "use client"
 
-import { use, useState } from "react"
+import { useState } from "react"
 import { supabase } from "@/lib/supabase/supabase"
 import { useRouter } from "next/navigation"
 import Input from "@/components/admin/Input"
