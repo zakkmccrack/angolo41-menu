@@ -52,7 +52,7 @@ export default function CardProduct({ product }: Props) {
                     onClick={() => addToCart(product)}
                     className="bg-angolo-green text-white px-3 py-1 rounded-md hover:bg-green-contrast"
                 >
-                    ADD TO CART
+                    ADD TO LIST
                 </button>
             </div>
 

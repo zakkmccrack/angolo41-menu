@@ -7,6 +7,8 @@ import { useState } from "react"
 export default function CartFloater() {
     const { cart, removeFromCart } = useCart();
     const [open, setOpen] = useState(false);
+    const [show, setShow] = useState(true);
+
     return (
         <div className="flex justify-center">
             <motion.div className="fixed bottom-2 z-50 w-2/3"
@@ -14,17 +16,18 @@ export default function CartFloater() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0 }}
                 layout
+                onClick={() => {if(show){alert("QUESTO NON SERVE PER ORDINARE, TI AIUTA A TENERE TRACCIA DI CIO' CHE VORRAI ORDINARE"); setShow(false)}}}
             >
-                <button onClick={() => setOpen(!open)} className=" p-4 bg-angolo-green text-white w-full">
+                <button onClick={() => setOpen(!open)} className="p-2 bg-angolo-green text-white w-full max-h-[10vh]">
                     {open ? (
                         <p className="font-bold text-2xl">CLOSE</p>
                     ) : (
-                        <p className="font-bold text-2xl">CART</p>
+                        <p className="font-bold text-2xl">YOUR LIST</p>
                     )}
                 </button>
 
                 {open && (
-                    <div className="bg-background border-2 max-h-[50vh] overflow-y-auto">
+                    <div className="bg-background border-2 max-h-[30vh] overflow-y-auto">
                         {cart.length === 0 ? (
                             <p className="font-bold text-xl p-2">Nessun Prodotto</p>
                         ) : (
