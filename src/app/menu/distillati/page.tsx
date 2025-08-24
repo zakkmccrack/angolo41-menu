@@ -1,6 +1,6 @@
 'use client'
 
-import CardProduct from "@/components/frontend/CardProduct";
+import CardProduct from "@/components/menu/CardProduct";
 import Spinner from "@/components/LoadingComponent";
 import { readTableFromName } from "@/lib/supabase/services/productRepo";
 import { Product } from "@/types/BaseProduct";

@@ -43,8 +43,6 @@ export default function AdminPage() {
             for (const table of tables) {
                 const prods = await readTableFromName(table);
                 result[table] = prods
-                { console.log(table) };
-
             }
 
             setTableProducts(result);
@@ -55,7 +53,7 @@ export default function AdminPage() {
         fetchData();
     }, [])
 
-    if (loading) return(<Spinner/>)
+    if (loading) return (<Spinner />)
 
     return (
         <div className="flex flex-col justify-around bg-background p-6 max-w-full mx-auto w-full">
