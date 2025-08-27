@@ -4,7 +4,6 @@ import Navbar from "@/components/home/Navbar";
 import Link from "next/link";
 import Image from "next/image";
 import { FaInstagram, FaFacebook, FaPhone, FaRegEnvelope, FaHome } from "react-icons/fa";
-import { useState } from "react";
 import Carousel from "@/components/home/Carousel";
 
 export default function Home() {
