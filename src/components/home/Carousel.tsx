@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { FaAccessibleIcon } from "react-icons/fa"
 
 export default function Carousel() {
     const [current, setCurrent] = useState(0)
@@ -19,16 +20,16 @@ export default function Carousel() {
                     style={{ transform: `translateX(-${current * 100}%)` }}
                 >
                     <div className="w-full flex-shrink-0 object-cover" key={1}>
-                        <p>Cacca</p>
+                        <FaAccessibleIcon />
                     </div>
                     <div className="w-full flex-shrink-0 object-cover" key={2}>
-                        <p>Cacca</p>
+                        <p></p>
                     </div>
                     <div className="w-full flex-shrink-0 object-cover" key={3}>
-                        <p>Cacca</p>
+                        <p></p>
                     </div>
                     <div className="w-full flex-shrink-0 object-cover" key={4}>
-                        <p>Cacca</p>
+                        <p></p>
                     </div>
                 </div>
                 <button
