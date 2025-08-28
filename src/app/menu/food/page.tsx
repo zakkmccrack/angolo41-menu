@@ -1,6 +1,6 @@
 'use client'
 
-import CardProduct from "@/components/frontend/CardProduct";
+import CardProduct from "@/components/menu/CardProduct";
 import { readTableFromName } from "@/lib/supabase/services/productRepo"
 import { Product } from "@/types/BaseProduct";
 import { useEffect, useState } from "react";
